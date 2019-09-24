@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     if @post.save
         redirect_to @post
     else
-        render 'new'
+        render 'new_post'
     end
   end
 
