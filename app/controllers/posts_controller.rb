@@ -10,8 +10,10 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
+
     if @post.save
-        redirect_to @post
+        redirect_to new_post_path(@post)
     else
         render 'new_post'
     end
@@ -37,6 +39,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def authorize
+    redirect_to root_path, alert: 'Not authorized' unless can?(:crud)
+  end
 
   def find_post
     @post = Post.find(params[:id])

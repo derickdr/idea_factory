@@ -1,5 +1,11 @@
 <% @posts.each do |post| %>
-    <h2><%= post.title %></h2>
-    <div><% truncate(post.body, :length => 35) %></div>
-    <%= link_to "View Post", post %>
+    <div>
+        <h2><%= post.title %></h2>
+        <%= post.body %>
+    </div>
+    <div>
+        <%= link_to "Join", post %>
+        |
+        <%= link_to "Like", post %>
+    </div>
 <% end %>
